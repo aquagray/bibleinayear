@@ -11,20 +11,20 @@ fun generateContent(context: Context): List<Schedule> {
     val br = BufferedReader(InputStreamReader(input))
 
     try {
-        var week: String = ""
+        var week = 0
         br.lines().forEach {
             if (it.isBlank()) {
                 return@forEach
             }
 
             if (it.startsWith("Week")) {
-                week = it.substringAfter("Week ")
+                week = it.substringAfter("Week ").toInt()
+                list.add(Schedule(week, it, false))
                 return@forEach
             }
 
-            list.add(Schedule(week, it, false))
-
-
+            val read = context.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE).getBoolean(it, false)
+            list.add(Schedule(week, it, read))
         }
 
     } catch (e: Throwable) {

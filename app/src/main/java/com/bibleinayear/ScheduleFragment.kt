@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-import com.bibleinayear.content.Schedule
-import com.bibleinayear.content.generateContent
+import android.app.AlertDialog
+import android.text.InputType
+import android.view.*
+import android.widget.EditText
+import com.bibleinayear.content.*
 
 /**
  * A fragment representing a list of Items.
@@ -22,8 +22,9 @@ class ScheduleFragment : Fragment() {
 
     // TODO: Customize parameters
     private var columnCount = 1
-
     private var listener: OnListFragmentInteractionListener? = null
+    private var mAdapter: MyScheduleRecyclerViewAdapter? = null
+    private var mView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,13 +39,19 @@ class ScheduleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_schedule_list, container, false)
+        mView = view as RecyclerView
 
-        with(view as RecyclerView) {
+        with(mView!!) {
             layoutManager = when {
                 columnCount <= 1 -> LinearLayoutManager(context)
                 else -> GridLayoutManager(context, columnCount)
             }
             adapter = MyScheduleRecyclerViewAdapter(generateContent(context), listener)
+        }
+
+        mAdapter = mView!!.adapter as MyScheduleRecyclerViewAdapter
+        with(mView!!.layoutManager as LinearLayoutManager) {
+            scrollToPositionWithOffset(mAdapter!!.getLastUnreadPosition(), 20)
         }
 
         return view
@@ -93,5 +100,78 @@ class ScheduleFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+
+    fun handleMenu(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.clear_all -> {
+                clearAll()
+                true
+            }
+            R.id.mark_read -> {
+                markReadUntil()
+                true
+            }
+            R.id.niv -> {
+                BIBLE_VERSION = "NIV"
+                saveVersion()
+                true
+            }
+            R.id.esv -> {
+                BIBLE_VERSION = "ESV"
+                saveVersion()
+                true
+            }
+            R.id.kjv -> {
+                BIBLE_VERSION = "KJV"
+                saveVersion()
+                true
+            }
+            R.id.msg -> {
+                BIBLE_VERSION = "MSG"
+                saveVersion()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun saveVersion() {
+        context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
+            .edit().putString(VERSION_KEY, BIBLE_VERSION).commit()
+    }
+
+    private fun clearAll() {
+        mAdapter!!.clear(context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)!!)
+        updateView()
+    }
+
+    private fun markReadUntil() {
+       launchAlert {
+           val sf = context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
+           mAdapter!!.markReadUntil(sf, it)
+           updateView()
+       }
+    }
+
+    fun updateView() {
+        mView!!.swapAdapter(mAdapter, false)
+        mAdapter!!.notifyDataSetChanged()
+    }
+
+    private fun launchAlert(okListener: (Int) -> Unit) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Mark read until")
+        builder.setMessage("Type the week to which you'd like to mark it as read. If you type 3, everything until week 3 will be marked as read.")
+        val input = EditText(context)
+        input.inputType = InputType.TYPE_CLASS_NUMBER
+        input.gravity = Gravity.CENTER
+        builder.setView(input)
+
+        builder.setPositiveButton("OK", { dialog, which ->
+            okListener(input.text.toString().toInt())
+        })
+        builder.setNegativeButton("Cancel", { dialog, which -> dialog.cancel() })
+        builder.show()
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_content_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <CheckBox
+        android:id="@+id/item_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin_half"
+        android:clickable="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/item_content_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/text_margin_half"
+        android:paddingBottom="@dimen/text_margin_half"
+        android:textAppearance="?attr/textAppearanceListItem"
+        app:layout_constraintLeft_toRightOf="@+id/item_checkbox"
+        app:layout_constraintTop_toTopOf="@+id/item_checkbox"
+        app:layout_constraintBottom_toBottomOf="@+id/item_checkbox"
+        tools:text="TEST CONTENT" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
