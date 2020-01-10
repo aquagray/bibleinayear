@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/version"
+        android:title="Change bible version"
+        >
+        <menu>
+        <item android:id="@+id/niv"
+            android:title="NIV"
+            />
+        <item android:id="@+id/esv"
+            android:title="ESV"
+            />
+        <item android:id="@+id/kjv"
+            android:title="King James Version"
+            />
+        <item android:id="@+id/msg"
+            android:title="The Message"
+            />
+        </menu>
+    </item>
+
+    <item android:id="@+id/clear_all"
+        android:title="Clear all read"
+        />
+    <item android:id="@+id/mark_read"
+        android:title="Mark Read Until..."
+        />
+
+
+</menu>
