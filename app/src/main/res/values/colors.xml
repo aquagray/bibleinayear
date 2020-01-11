@@ -18,6 +18,7 @@
 <!--    <color name="colorAccent">#918879</color>-->
 
 
+<<<<<<< HEAD
 <!--    <color name="colorBackground1">#E3E6E1</color>-->
 <!--    <color name="colorText1">#352E2B</color>-->
 
@@ -46,4 +47,19 @@
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#E8EAF6</color>
 
+=======
+    <!-- theme page 187 -->
+    <color name="colorBackground1">#E3E6E1</color>
+    <color name="colorText1">#352E2B</color>
+
+    <color name="colorBackground2">#C7B5A8</color>
+    <color name="colorText2">#352E2B</color>
+
+    <color name="colorTitleBg">#4B5F65</color>
+    <color name="colorTitleTextBg">#B7C6C7</color>
+
+    <color name="colorPrimary">#71BAC0</color>
+    <color name="colorPrimaryDark">#918879</color>
+    <color name="colorAccent">#918879</color>
+>>>>>>> 98514c2e805254f4ebc802685df9cf8f3f81ed3c
 </resources>

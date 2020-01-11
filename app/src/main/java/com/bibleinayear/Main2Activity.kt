@@ -49,8 +49,11 @@ class Main2Activity : AppCompatActivity(), ScheduleFragment.OnListFragmentIntera
         BIBLE_VERSION = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
                 .getString(VERSION_KEY, "ESV").toString()
 
+<<<<<<< HEAD
         setTitle("Bible in 1 Year ($BIBLE_VERSION)")
 
+=======
+>>>>>>> 98514c2e805254f4ebc802685df9cf8f3f81ed3c
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Launching utmost.org", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
