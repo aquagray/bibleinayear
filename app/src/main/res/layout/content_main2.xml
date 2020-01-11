@@ -7,11 +7,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     />
-
-<!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
-<!--    app:layout_behavior="com.bibleinayear.HideOnScrollFAB"-->
-=======
-    />
->>>>>>> 98514c2e805254f4ebc802685df9cf8f3f81ed3c
+    <!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--    app:layout_behavior="com.bibleinayear.HideOnScrollFAB"-->
