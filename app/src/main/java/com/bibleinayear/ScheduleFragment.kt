@@ -85,6 +85,8 @@ class ScheduleFragment : Fragment() {
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onListFragmentInteraction(item: Schedule?)
+
+        fun onTitleChanged()
     }
 
     companion object {
@@ -139,6 +141,7 @@ class ScheduleFragment : Fragment() {
     private fun saveVersion() {
         context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
             .edit().putString(VERSION_KEY, BIBLE_VERSION).commit()
+        listener!!.onTitleChanged()
     }
 
     private fun clearAll() {

@@ -38,7 +38,10 @@ class Main2Activity : AppCompatActivity(), ScheduleFragment.OnListFragmentIntera
                 max--
             }
         }
+    }
 
+    override fun onTitleChanged() {
+        setTitle("Bible in 1 Year ($BIBLE_VERSION)")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
