@@ -1,8 +1,12 @@
 # bibleinayear
 
-Initial version of the bible in a year.
+This is a simple app to help you read through the bible in 1 year.
+
+Link to download the apk:
+[link](https://www.google.com)
 
 Features:
+
 1) 
 Remembers your progress on reading, and you can click the link and goto the bible verse!
 ![Link](link_click.gif)
