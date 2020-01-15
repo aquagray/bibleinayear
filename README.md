@@ -3,12 +3,12 @@
 This is a simple app to help you read through the bible in 1 year.
 
 Link to download the apk:
-[link](https://www.google.com)
+[link](https://github.com/aquagray/bibleinayear/blob/master/app-debug.apk)
 
 Features:
 
-1) 
-Remembers your progress on reading, and you can click the link and goto the bible verse!
+1) Remembers your progress on reading, and you can click the link and goto the bible verse!
+
 ![Link](link_click.gif)
 
 2) Change the bible version
