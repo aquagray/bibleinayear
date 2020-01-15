@@ -107,6 +107,7 @@ class ScheduleFragment : Fragment() {
     fun handleMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.clear_all -> {
+
                 clearAll()
                 true
             }
@@ -145,8 +146,10 @@ class ScheduleFragment : Fragment() {
     }
 
     private fun clearAll() {
-        mAdapter!!.clear(context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)!!)
-        updateView()
+        launchAlertClearAll {
+            mAdapter!!.clear(context!!.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)!!)
+            updateView()
+        }
     }
 
     private fun markReadUntil() {
@@ -173,6 +176,19 @@ class ScheduleFragment : Fragment() {
 
         builder.setPositiveButton("OK", { dialog, which ->
             okListener(input.text.toString().toInt())
+        })
+        builder.setNegativeButton("Cancel", { dialog, which -> dialog.cancel() })
+        builder.show()
+    }
+
+
+    private fun launchAlertClearAll(okListener: () -> Unit) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Clearing Progress")
+        builder.setMessage("Are you sure you want to clear everything? Click \"ok\" to proceed. Click \"Cancel\" to stop.")
+
+        builder.setPositiveButton("OK", { dialog, which ->
+            okListener.invoke()
         })
         builder.setNegativeButton("Cancel", { dialog, which -> dialog.cancel() })
         builder.show()

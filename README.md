@@ -2,13 +2,16 @@
 
 Initial version of the bible in a year.
 
-You can scroll, click and it links to the bible gateway with the default version = NIV for now.
+Features:
+1) 
+Remembers your progress on reading, and you can click the link and goto the bible verse!
+![Link](link_click.gif)i
 
-TODO:
-- add different versions
-- add "read" status (gray out if you clicked the link before)
-- add "tutorial" page at the beginning
-- scroll to the last-read item when app opens
+2) Change the bible version
+![Version](change_version.gif)i
 
-![Farmers Market Finder Demo](demo.gif)
+3) Easy to edit read / not read if you made mistake.
+![Edit](edit.gif)i
+![Edit](until.gif)i
+![Edit](clear.gif)i
 

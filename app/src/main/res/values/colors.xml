@@ -46,4 +46,6 @@
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#B2B6CA</color>
 
+    <color name="colorEditTitle">#04D8F3</color>
+
 </resources>

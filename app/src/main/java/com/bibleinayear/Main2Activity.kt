@@ -29,14 +29,8 @@ class Main2Activity : AppCompatActivity(), ScheduleFragment.OnListFragmentIntera
 
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
             startActivity(browserIntent)
-
-            var max = 10
-            var result = false
-            while (!result && max > 0) {
-                result = getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
-                    .edit().putBoolean(item.content, true).commit()
-                max--
-            }
+            getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
+                .edit().putBoolean(item.content, true).apply()
         }
     }
 
@@ -69,7 +63,14 @@ class Main2Activity : AppCompatActivity(), ScheduleFragment.OnListFragmentIntera
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return fragment.handleMenu(item)
+        return when(item.itemId) {
+            R.id.edit -> {
+                val intent = Intent(this, EditActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> fragment.handleMenu(item)
+        }
     }
 
     val fragment: ScheduleFragment
