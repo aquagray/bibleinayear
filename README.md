@@ -23,7 +23,7 @@ Features:
 
 ![Edit](utmost.gif)
 
-3) Easy to edit read / not read if you made mistake.
+4) Easy to edit read / not read if you made mistake.
 
 ![Edit](edit.gif)
 ![Edit](until.gif)
