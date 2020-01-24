@@ -2,8 +2,12 @@
 
 This is a simple app to help you read through the bible in 1 year.
 
-Link to download the apk:
+To install, goto the link below:
+
 [link](https://github.com/aquagray/bibleinayear/blob/master/app-debug.apk)
+
+Then click download, and install.
+
 
 Features:
 
@@ -15,9 +19,13 @@ Features:
 
 ![Version](change_version.gif)
 
+3) utmost.org to today's devotional
+
+![Edit](utmost.gif)
+
 3) Easy to edit read / not read if you made mistake.
 
-![Edit](edit.gif)i
-![Edit](until.gif)i
-![Edit](clear.gif)i
+![Edit](edit.gif)
+![Edit](until.gif)
+![Edit](clear.gif)
 
